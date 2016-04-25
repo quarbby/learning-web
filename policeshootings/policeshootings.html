@@ -7,6 +7,8 @@
 		
         <!-- jQuery, Bootstrap, Font Awesome -->
         <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">        
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">        
@@ -34,6 +36,54 @@
         </div>
         
         <div id="sidebar" class="leaflet-control">
+            <h4>Map Filter</h4><hr>
+            <p><strong>Hit or Killed</strong></p>
+            <select class="form-control" id="select_hitOrKilled" onchange="getResult()">
+              <option value="all">Show All</option>
+              <option disabled>---------------------------------------</option>         
+              <option value="Hit">Hit</option>
+              <option value="Killed">Killed</option>
+            </select>      
+            <br>  
+            
+            <p><strong>Age</strong></p>
+            <p><span id="slider-age-vals" style="font-family:Marmelad;">30 yo - 50 yo</span></p>
+            <div id="slider_age" data-value="30" style="width:100%; margin-left: 6px;"></div>      
+            <br>
+            
+            <p><strong>Victim's Gender</strong></p>
+            <select class="form-control" id="select_gender" onchange="getResult()">
+              <option value="all">Show All</option>
+              <option disabled>---------------------------------------</option>         
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>      
+            <br>              
+            
+            <p><strong>Hispanic or Latino Origin</strong></p>
+            <select class="form-control" id="select_armedOrUnarmed" onchange="getResult()">
+              <option value="all">Show All</option>
+              <option disabled>---------------------------------------</option>          
+              <option value="hlo">Hispanic or Latino Origin</option>
+              <option value="not_hlo">Not Hispanic or Latino Origin</option>
+            </select>   
+            <br>               
+            
+            <p><strong>Armed or Unarmed</strong></p>
+            <select class="form-control" id="select_armedOrUnarmed" onchange="getResult()">
+              <option value="all">Show All</option>
+              <option disabled>---------------------------------------</option>          
+              <option value="Armed">Armed</option>
+              <option value="Unarmed">Unarmed</option>
+              <option value="Unknown">Unknown</option>
+            </select>   
+            <br>    
+            
+            <p><strong>Shots Fired</strong></p>
+            <p><span id="shots-fired-val" style="font-family:Marmelad;">10 shots - 50 shots</span></p>
+            <div id="slider_shots" data-value="30" style="width:100%; margin-left: 6px;"></div>      
+            <br>            
+            
         </div>        
         
         <div class="text-center">
