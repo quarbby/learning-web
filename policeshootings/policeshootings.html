@@ -5,14 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Police Shootings</title>
 		
-        <!-- jQuery, Bootstrap -->
+        <!-- jQuery, Bootstrap, Font Awesome -->
         <script src="//code.jquery.com/jquery.min.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">        
         
         <!-- leaflet libraries -->
 	     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
 	     <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+	     
+	     <link rel="stylesheet" href="css/L.Control.Sidebar.css" />
+	     <script src="js/L.Control.Sidebar.js"></script>	     
+
+	     <link rel="stylesheet" href="css/easy-button.css" />
+	     <script src="js/easy-button.js"></script>	  
 
         <!-- Custom files -->
         <script type="text/javascript" src="js/map.js"></script>
@@ -20,6 +27,19 @@
 
     </head>
     <body>
+        <div>
+            <h1 class="text-center">Deadspin Police Shootings</h1>
+            <p class="text-center" id="about">This map shows crowdsourced data on police shootings from Fall of 2014. 
+                    Data for this project taken from <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202" target="_blank">here</a>.</p>
+        </div>
+        
+        <div id="sidebar" class="leaflet-control">
+        </div>        
+        
+        <div class="text-center">
+            Cross Tabulation
+        </div>
+        
         <div class="container">
         <div id="map-container"></div>
         </div>
