@@ -12,17 +12,20 @@ var allLayer = new L.layerGroup();
 var hitOrKilledLayer = new L.layerGroup();
 var armedOrUnarmedLayer = new L.layerGroup();
 var genderLayer = new L.layerGroup();
-var shotsLayer = new L.layerGroup();    
+var shotsLayer = new L.layerGroup();   
+var filterLayer = new L.layerGroup();
+var baseMaps;
+var overlayMaps;
     
 // Function to draw map
 var drawMap = function() {
     var baseLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');    
     
-    var baseMaps = {
-      "Base": baseLayer  
+    baseMaps = {
+      "Base": baseLayer
     };
     
-    var overlayMaps = {
+    overlayMaps = {
         "All": allLayer,
         "Hit or Killed": hitOrKilledLayer,
         "Armed or Unarmed": armedOrUnarmedLayer,
@@ -64,8 +67,6 @@ var drawMap = function() {
     map.on('click', function () {
         sidebar.hide();
     });   
-    
-    sidebar.show();
     
     L.DomEvent.on(sidebar.getCloseButton(), 'click', function () {
         sidebarOpened = false;
@@ -142,9 +143,9 @@ var addToHitOrKilled = function(entry) {
 }
 
 var addArmedOrUnarmed = function(entry) {
-    var armedOrUnarmedColours = {'Armed': 'red', 'Unarmed': 'black', 'undefined': 'green'};
+    var armedOrUnarmedColours = {'Armed': 'red', 'Unarmed': 'blue', 'undefined': 'green'};
     var circle = new L.circle([entry.lat, entry.lng], 3, {
-        color: armedOrUnarmedColours[entry['Armed or Unarmed']],
+        color: armedOrUnarmedColours[entry['Armed or Unarmed?']],
         fillOpacity: 0.5
     });
     circle.bindPopup(createPopupText(entry));
@@ -162,11 +163,23 @@ var addGender = function(entry) {
 }
 
 var addShots = function(entry) {
-    var shotsColours = ['blue', 'pink', 'green', 'yellow'];
     var shotsFired = entry['Shots Fired'];
+    if (shotsFired == undefined) return;
 
-    var circle = new L.circle([entry.lat, entry.lng], shotsFired*0.10, {
-        color: shotsColours[Math.floor(Math.random()*shotsColours.length)],
+    var shotGradient = 'cyan'
+    shotsFired < 3 ?  shotGradient = 'cyan' :
+    shotsFired < 7 ?  shotGradient = 'yellow' :
+    shotsFired < 20 ?  shotGradient = 'blue'  :
+    shotsFired < 40 ? shotGradient = 'green' :
+    shotsFired < 70 ? shotGradient = 'red' :
+    shotsFired < 100 ? shotGradient = 'black' :
+                        shotGradient = 'cyan';
+
+    //console.log(shotGradient);
+
+    var circle = new L.circle([entry.lat, entry.lng], 5, {
+        //color: shotsColours[Math.floor(Math.random()*shotsColours.length)],
+        color: shotGradient,
         fillOpacity: 0.5
     });
     circle.bindPopup(createPopupText(entry));
@@ -176,7 +189,26 @@ var addShots = function(entry) {
 var createPopupText = function(entry) {
     var text = "";
     text += "<b>Agency Name: </b>" + entry['Agency Name'] + "<br>";
-    text += "<b>Summary: </b>" + entry['Summary'] + "<br>";
+    if (entry['Summary'] != undefined) {
+        text += "<b>Summary: </b>" + entry['Summary'] + "<br>";
+    }
+    if (entry['Shots Fired'] != undefined) {
+        text += "<b>Shots Fired: </b>" + entry['Shots Fired'] + "<br>";
+    }
+    if (entry['Victim\'s Gender'] != undefined) {
+        text += "<b>Gender: </b>" + entry['Victim\'s Gender'] + "<br>";
+    }    
+    if (entry['Hit or Killed?'] != undefined) {
+        text += "<b>Hit or Killed: </b>" + entry['Hit or Killed?'] + "<br>";
+    }    
+    if (entry['Armed or Unarmed?'] != undefined) {
+        text += "<b>Armed or Unarmed: </b>" + entry['Armed or Unarmed?'] + "<br>";
+    }   
+    
+    if (entry['Shots Fired'] != undefined) {
+        text += "<b>Shots Fired: </b>" + entry['Shots Fired'] + "<br>";
+    }      
+    
     text += "<a href=\"" + entry['Source Link'] + "\" target=\"_blank\">Source Link</a><br>";
     text += "<b>Date Searched: </b>" + entry['Date Searched']; 
     
@@ -184,13 +216,66 @@ var createPopupText = function(entry) {
 }
 
 var getResult = function() {
+    clearLayers();  
+    filterLayer = new L.layerGroup();
+    
     var selected_killed = $("#select_hitOrKilled").val();
+    var selected_origin = $("#select_origin").val();
     var selected_min_age = $("#slider_age").slider( "values", 0 );
     var selected_max_age = $("#slider_age").slider( "values", 1 );
     var selected_gender = $("#select_gender").val();
     var selected_armed = $("#select_armedOrUnarmed").val();
     var selected_min_shots = $("#slider_shots").slider( "values", 0 );
     var selected_max_shots = $("#slider_shots").slider( "values", 1 );
+    
+    console.log(selected_killed + " " + selected_min_age + " " + selected_max_age 
+                    + " " + selected_gender + " " + selected_armed + " " 
+                    + selected_min_shots + " " + selected_max_shots);
+                    
+
+    for (var i in allData) {
+        var entry = allData[i];
+
+        if (selected_killed != 'all') {
+            if (selected_killed != entry['Hit or Killed?']) continue;
+        }
+        
+        if (selected_armed != 'all') {
+            if (selected_killed != entry['Armed or Unarmed?']) continue;
+        }
+        
+        if (selected_gender != 'all') {
+            if (selected_gender != entry['Victim\'s Gender']) continue;
+        }     
+        
+        if (selected_origin != 'all') {
+            if (selected_origin != entry['Hispanic or Latino Origin']) continue;
+        }        
+        
+        if (entry['Victim\'s Age'] < selected_min_age || 
+            entry['Victim\'s Age'] > selected_max_age)  continue;         
+
+        if (entry['Shots Fired'] < selected_min_shots || 
+            entry['Shots Fired'] > selected_max_shots)  continue;  
+            
+        //console.log(entry);
+        
+        var circle = new L.circle([entry.lat, entry.lng], 3, {
+            color: 'red',
+            fillOpacity: 0.5
+        });
+        var text = createPopupText(entry);
+        circle.bindPopup(text);
+        circle.addTo(filterLayer);
+    }
+    map.addLayer(filterLayer);
+}
+
+function clearLayers() {
+    $.each(overlayMaps, function(index, value){
+        map.removeLayer(value);
+    });
+    map.removeLayer(filterLayer);
 }
 
 function setSliders() {

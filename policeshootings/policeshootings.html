@@ -25,6 +25,7 @@
 
         <!-- Custom files -->
         <script type="text/javascript" src="js/map.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
         <link rel="stylesheet" href="css/main.css"/>
 
     </head>
@@ -61,11 +62,11 @@
             <br>              
             
             <p><strong>Hispanic or Latino Origin</strong></p>
-            <select class="form-control" id="select_armedOrUnarmed" onchange="getResult()">
+            <select class="form-control" id="select_origin" onchange="getResult()">
               <option value="all">Show All</option>
               <option disabled>---------------------------------------</option>          
-              <option value="hlo">Hispanic or Latino Origin</option>
-              <option value="not_hlo">Not Hispanic or Latino Origin</option>
+              <option value="Hispanic or Latino Origin">Hispanic or Latino Origin</option>
+              <option value="Not Hispanic or Latino Origin">Not Hispanic or Latino Origin</option>
             </select>   
             <br>               
             
@@ -97,6 +98,7 @@
     </body>
 
     <script>
+        createDatabase();
         drawMap();
     </script>
 </html>
