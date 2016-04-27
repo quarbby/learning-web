@@ -355,6 +355,11 @@ function buttonClick() {
         var table = document.createElement('table');
             table.className = 'table table-striped';
             
+        var thead = document.createElement('thead');
+        table.appendChild(thead);
+        
+        var tbody = document.createElement('tbody');
+            
         // Row 1 
         var tr = document.createElement('tr');
     
@@ -363,10 +368,10 @@ function buttonClick() {
         tr.appendChild( document.createElement('td') );
     
         tr.cells[0].appendChild( document.createTextNode('///'));
-        tr.cells[1].appendChild( document.createTextNode(colArray[0]));
-        tr.cells[2].appendChild( document.createTextNode(colArray[1]));
+        tr.cells[1].appendChild( createBoldElement(colArray[0]));
+        tr.cells[2].appendChild( createBoldElement(colArray[1]));
     
-        table.appendChild(tr); 
+        tbody.appendChild(tr); 
         
         // Row 2
         var tr = document.createElement('tr');
@@ -374,12 +379,12 @@ function buttonClick() {
         tr.appendChild( document.createElement('td') );
         tr.appendChild( document.createElement('td') );
         tr.appendChild( document.createElement('td') );
-    
-        tr.cells[0].appendChild( document.createTextNode(rowArray[0]))
+
+        tr.cells[0].appendChild( createBoldElement(rowArray[0]));
         tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[0])));
         tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[1])));     
         
-        table.appendChild(tr);
+        tbody.appendChild(tr);
         
         // Row 3
         var tr = document.createElement('tr');
@@ -388,19 +393,25 @@ function buttonClick() {
         tr.appendChild( document.createElement('td') );
         tr.appendChild( document.createElement('td') );
     
-        tr.cells[0].appendChild( document.createTextNode(rowArray[1]))
+        tr.cells[0].appendChild( createBoldElement(rowArray[1]));
         tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[0])));
         tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[1])));     
         
-        table.appendChild(tr);        
-
+        tbody.appendChild(tr);        
+        
+        table.appendChild(tbody);
         tablearea.appendChild(table);        
     }
     
 }
 
+var createBoldElement = function(text) {
+    var element = document.createElement("b");
+    element.innerHTML = text;
+    return element;
+}
+
 var getNumber = function(row, col) {
-    console.log(row, col);
     var count = 0;
     
     for (var i in allData) {

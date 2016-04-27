@@ -24,3 +24,9 @@ input[type="radio"] {
 .radio {
     vertical-align: left;
 }
+
+.center-table
+{
+  margin: 0 auto !important;
+  float: none !important;
+}
