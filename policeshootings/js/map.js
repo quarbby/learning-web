@@ -92,7 +92,7 @@ var getData = function() {
     $.getJSON( "data/response.json", function(data) {
         customBuild(data);
     });
-
+    
 }
 
 // Loop through your data and add the appropriate layers and points
@@ -128,6 +128,9 @@ var customBuild = function(data) {
         addGender(entry);
         addShots(entry);
     });
+    
+    // Build database
+    createDatabase();    
     
     //console.log(uniqueArray);
     //console.log(Math.min.apply(Math, uniqueArray), Math.max.apply(Math, uniqueArray));
@@ -337,7 +340,6 @@ function buttonClick() {
     
     var usingDatabase = false;
     if ($('#useDatabase').prop('checked')) {
-        useDatabase(rowSelected, colSelected);
         usingDatabase = true;
     }
     

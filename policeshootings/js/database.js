@@ -1,18 +1,25 @@
 var lengthOfResults;
 var db;
 
-function useDatabase() {
-    createDatabase();
-}
-
 function getCountFromDatabase(rowSelected, colSelected, rowVal, colVal) {
-    var sqlStmt = 'SELECT * FROM SHOOTINGS WHERE' + 
-                  String(rowSelected) + '= \"' + String(rowVal) + '\" AND ' +
-                  String(colSelected) + '= \"' + String(colVal) + '\";'
+    var sqlStmt = 'SELECT * FROM SHOOTINGS WHERE ' + 
+                  String(rowSelected) + ' = \"' + String(rowVal) + '\" AND ' +
+                  String(colSelected) + ' = \"' + String(colVal) + '\";'
+                  
+    console.log(sqlStmt); 
+    
+    db.transaction(function(tx) {
+       tx.executeSql(sqlStmt, [], countResults, null); 
+    });
+    
+    /*
     lengthOfResults = db.transaction(function (tx) {
         tx.executeSql('SELECT * FROM SHOOTINGS WHERE hit = "Hit";', [],
 					   countResults, null);
 				});
+	*/
+	
+    console.log("Length of Results: " + lengthOfResults);
 	
 	return lengthOfResults;
 }
@@ -35,6 +42,8 @@ var createDatabase = function() {
                     );
     });    
     
+    clearTable();
+    
     insertData();
 
     /*
@@ -48,15 +57,21 @@ var createDatabase = function() {
 function countResults (tx, results) {
     var len = results.rows.length;
     lengthOfResults = len;
-    console.log("Length of Results: " + lengthOfResults);
     return len;
+}
+
+function clearTable() {
+    db.transaction(function (tx) {  
+        tx.executeSql('DELETE FROM SHOOTINGS;');
+    });     
 }
 
 function insertData() {
     var statements = [];
-    for (var i=0; i<allData.length; i++) {
+
+    for (var i in allData) {
         var entry = allData[i];
-        
+
         var hit = String(entry['Hit or Killed?']);
         var gender = String(entry['Victim\'s Gender']);
         var shots = String(entry['Shots Fired']);
@@ -74,12 +89,13 @@ function insertData() {
         
         statements.push(sqlStmt);
     }
-    
 
     db.transaction(function (tx) {
         for (var i=0; i<statements.length; i++) {
             var sqlStmt = statements[i];
-            tx.executeSql(sqlStmt);
+            //tx.executeSql(sqlStmt, [], function () {console.log("Success"); }, function() {console.log(sqlStmt);});
+            //tx.executeSql(sqlStmt, [], null, null);
+            tx.executeSql(sqlStmt, [], function () { }, function() { });
         }
     });      
     
