@@ -1,5 +1,5 @@
 #map-container {
-	height: 800px;
+	height: 600px;
     width: 100%;
 }
 
@@ -10,6 +10,17 @@
 }
 
 #sidebar {
-    height: 500px;
+    height: 300px;
     overflow-y: scroll;
+}
+
+label {
+     vertical-align: left;
+}
+input[type="radio"] {
+     float:left;
+}
+
+.radio {
+    vertical-align: left;
 }

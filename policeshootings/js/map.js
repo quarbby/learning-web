@@ -5,6 +5,12 @@ var fields = ['Agency Name', 'Armed or Unarmed?', 'City', 'Hispanic or Latino Or
                 'Hit or Killed?', 'Race', 'Shots Fired', 'Source Link', 'State', 'Summary',
                 'Timestamp', 'Date Searched', 'Victim Name', 'Victim\'s Age', 'Victim\'s Gender', 'Weapon'];
                 
+var fields_dict = {'hit': ['Hit', 'Killed'],
+                   'hisLat': ['Hispanic or Latino Origin', 'Not of Hispanic or Latino Origin'],
+                   'gender': ['Male', 'Female'],
+                   'armed': ['Armed', 'Unarmed']
+                    };
+                
 var allData = [];                
                 
 // Initialise all the layer groups
@@ -228,11 +234,13 @@ var getResult = function() {
     var selected_min_shots = $("#slider_shots").slider( "values", 0 );
     var selected_max_shots = $("#slider_shots").slider( "values", 1 );
     
+    /*
     console.log(selected_killed + " " + selected_min_age + " " + selected_max_age 
                     + " " + selected_gender + " " + selected_armed + " " 
                     + selected_min_shots + " " + selected_max_shots);
                     
-
+    */
+    
     for (var i in allData) {
         var entry = allData[i];
 
@@ -313,4 +321,97 @@ function setSliders() {
           getResult();
     }
     });    
+}
+
+function buttonClick() {
+    //var hitRowChecked = $('#hit_row').prop('checked');
+
+    var rowSelected, colSelected;
+    $('#rowCheckboxGroup input:checked').each(function() {
+        rowSelected = $(this).attr('name');
+    }); 
+    
+    $('#colCheckboxGroup input:checked').each(function() {
+        colSelected = $(this).attr('name');
+    });     
+    
+    console.log(rowSelected);
+    console.log(fields_dict[rowSelected]);
+    
+    var tablearea = document.getElementById('table-div');
+    $('#table-div').empty();
+    
+    if (rowSelected == undefined || 
+        colSelected == undefined) {
+        tablearea.innerHTML = "Please select one item each to cross tabulate";
+    }
+    else if (rowSelected == colSelected) {
+        tablearea.innerHTML = "Please select different attributes to cross tabulate";
+    }
+    else {
+        var rowArray = fields_dict[rowSelected];
+        var colArray = fields_dict[colSelected];
+        
+        var table = document.createElement('table');
+            table.className = 'table table-striped';
+            
+        // Row 1 
+        var tr = document.createElement('tr');
+    
+        tr.appendChild( document.createElement('td') );
+        tr.appendChild( document.createElement('td') );
+        tr.appendChild( document.createElement('td') );
+    
+        tr.cells[0].appendChild( document.createTextNode('///'));
+        tr.cells[1].appendChild( document.createTextNode(colArray[0]));
+        tr.cells[2].appendChild( document.createTextNode(colArray[1]));
+    
+        table.appendChild(tr); 
+        
+        // Row 2
+        var tr = document.createElement('tr');
+    
+        tr.appendChild( document.createElement('td') );
+        tr.appendChild( document.createElement('td') );
+        tr.appendChild( document.createElement('td') );
+    
+        tr.cells[0].appendChild( document.createTextNode(rowArray[0]))
+        tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[0])));
+        tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[1])));     
+        
+        table.appendChild(tr);
+        
+        // Row 3
+        var tr = document.createElement('tr');
+    
+        tr.appendChild( document.createElement('td') );
+        tr.appendChild( document.createElement('td') );
+        tr.appendChild( document.createElement('td') );
+    
+        tr.cells[0].appendChild( document.createTextNode(rowArray[1]))
+        tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[0])));
+        tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[1])));     
+        
+        table.appendChild(tr);        
+
+        tablearea.appendChild(table);        
+    }
+    
+}
+
+var getNumber = function(row, col) {
+    console.log(row, col);
+    var count = 0;
+    
+    for (var i in allData) {
+        var entry = allData[i];
+        var found = 0;
+        for(property in entry) {
+            if (entry[property] == row) { found++; }
+            if (entry[property] == col) { found++; }
+        }
+        if (found == 2) { count++; }
+    }
+    
+    return count;
 }

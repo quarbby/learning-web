@@ -9,8 +9,8 @@
         <script src="//code.jquery.com/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>        
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">        
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">        
         
         <!-- leaflet libraries -->
@@ -88,7 +88,46 @@
         </div>        
         
         <div class="text-center">
-            Cross Tabulation
+            <h4>Cross Tabulation</h4>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="rowCheckboxGroup">
+                        <h4>Row</h4>
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="hit">Hit or Killed</label>
+                        </div>
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="armed">Armed or Unarmed</label>
+                        </div>  
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="gender">Gender</label>
+                        </div>   
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="hisLat">Hispanic or Latino Origin</label>
+                        </div>                        
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <button type="button" class="btn btn-primary" onclick="buttonClick()">Go!</button>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="colCheckboxGroup">
+                        <h4>Column</h4>
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="hit">Hit or Killed</label>
+                        </div>
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="armed">Armed or Unarmed</label>
+                        </div>  
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="gender">Gender</label>
+                        </div>   
+                        <div class="checkbox">
+                          <label><input type="checkbox" name="hisLat">Hispanic or Latino Origin</label>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
+            <div class="container" id="table-div">
+            </div>
         </div>
         
         <div class="container">
@@ -100,5 +139,19 @@
     <script>
         createDatabase();
         drawMap();
+        
+        $('#rowCheckboxGroup input[type=checkbox]').change(function() {
+        if (this.checked) {
+            $('#rowCheckboxGroup input[type=checkbox]').not(
+                                $(this)).prop('checked', false);
+            }
+        });  
+        
+        $('#colCheckboxGroup input[type=checkbox]').change(function() {
+        if (this.checked) {
+            $('#colCheckboxGroup input[type=checkbox]').not(
+                                $(this)).prop('checked', false);
+            }
+        });          
     </script>
 </html>
