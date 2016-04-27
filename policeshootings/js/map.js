@@ -335,8 +335,14 @@ function buttonClick() {
         colSelected = $(this).attr('name');
     });     
     
-    console.log(rowSelected);
-    console.log(fields_dict[rowSelected]);
+    var usingDatabase = false;
+    if ($('#useDatabase').prop('checked')) {
+        useDatabase(rowSelected, colSelected);
+        usingDatabase = true;
+    }
+    
+    //console.log(rowSelected);
+    //console.log(fields_dict[rowSelected]);
     
     var tablearea = document.getElementById('table-div');
     $('#table-div').empty();
@@ -381,8 +387,17 @@ function buttonClick() {
         tr.appendChild( document.createElement('td') );
 
         tr.cells[0].appendChild( createBoldElement(rowArray[0]));
-        tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[0])));
-        tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[1])));     
+        
+        if (usingDatabase) {
+            tr.cells[1].appendChild( document.createTextNode(
+                getCountFromDatabase(rowSelected, colSelected, rowArray[0], colArray[0])));
+            tr.cells[2].appendChild( document.createTextNode(
+                getCountFromDatabase(rowSelected, colSelected, rowArray[0], colArray[1])));                
+        }
+        else {
+           tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[0])));
+           tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[1])));     
+        }
         
         tbody.appendChild(tr);
         
@@ -394,9 +409,17 @@ function buttonClick() {
         tr.appendChild( document.createElement('td') );
     
         tr.cells[0].appendChild( createBoldElement(rowArray[1]));
-        tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[0])));
-        tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[1])));     
-        
+        if (usingDatabase) {
+            tr.cells[1].appendChild( document.createTextNode(
+                getCountFromDatabase(rowSelected, colSelected, rowArray[1], colArray[0])));
+            tr.cells[2].appendChild( document.createTextNode(
+                getCountFromDatabase(rowSelected, colSelected, rowArray[1], colArray[1])));              
+        }
+        else {
+            tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[0])));
+            tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[1])));     
+        }
+
         tbody.appendChild(tr);        
         
         table.appendChild(tbody);

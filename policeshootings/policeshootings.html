@@ -108,6 +108,9 @@
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                         <button type="button" class="btn btn-primary" onclick="buttonClick()">Go!</button>
+                        <div class="checkbox">
+                          <label><input type="checkbox" id="useDatabase">Use Database</label>
+                        </div>                    
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="colCheckboxGroup">
                         <h4>Column</h4>
@@ -127,9 +130,6 @@
                 </div>
             </div>
             <div class="container" id="table-div">
-                <div class="row">
-                    <div class="span9 centered" id="table-div"></div>
-                </div>
             </div>
         </div>
         
@@ -140,7 +140,7 @@
     </body>
 
     <script>
-        createDatabase();
+        //createDatabase();
         drawMap();
         
         $('#rowCheckboxGroup input[type=checkbox]').change(function() {
