@@ -382,47 +382,58 @@ function buttonClick() {
         tbody.appendChild(tr); 
         
         // Row 2
-        var tr = document.createElement('tr');
+        var tr1 = document.createElement('tr');
     
-        tr.appendChild( document.createElement('td') );
-        tr.appendChild( document.createElement('td') );
-        tr.appendChild( document.createElement('td') );
+        tr1.appendChild( document.createElement('td') );
+        tr1.appendChild( document.createElement('td') );
+        tr1.appendChild( document.createElement('td') );
 
-        tr.cells[0].appendChild( createBoldElement(rowArray[0]));
+        tr1.cells[0].appendChild( createBoldElement(rowArray[0]));
         
         if (usingDatabase) {
-            tr.cells[1].appendChild( document.createTextNode(
-                getCountFromDatabase(rowSelected, colSelected, rowArray[0], colArray[0])));
-            tr.cells[2].appendChild( document.createTextNode(
-                getCountFromDatabase(rowSelected, colSelected, rowArray[0], colArray[1])));                
+                getCountFromDatabase(rowSelected, colSelected, rowArray[0], colArray[0], function(result) {
+                    tr1.cells[1].appendChild( document.createTextNode(result));
+                    //return result;
+                });    
+                getCountFromDatabase(rowSelected, colSelected, rowArray[0], colArray[1], function(result) {
+                    //console.log(result);
+                    tr1.cells[2].appendChild( document.createTextNode(result));
+                });   
+
+            //tr.cells[1].appendChild( document.createTextNode(count1));
+            //tr.cells[2].appendChild( document.createTextNode(count2));                
         }
         else {
-           tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[0])));
-           tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[1])));     
+           tr1.cells[1].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[0])));
+           tr1.cells[2].appendChild( document.createTextNode(getNumber(rowArray[0], colArray[1])));     
         }
         
-        tbody.appendChild(tr);
+        tbody.appendChild(tr1);
         
         // Row 3
-        var tr = document.createElement('tr');
+        var tr2 = document.createElement('tr');
     
-        tr.appendChild( document.createElement('td') );
-        tr.appendChild( document.createElement('td') );
-        tr.appendChild( document.createElement('td') );
+        tr2.appendChild( document.createElement('td') );
+        tr2.appendChild( document.createElement('td') );
+        tr2.appendChild( document.createElement('td') );
     
-        tr.cells[0].appendChild( createBoldElement(rowArray[1]));
+        tr2.cells[0].appendChild( createBoldElement(rowArray[1]));
         if (usingDatabase) {
-            tr.cells[1].appendChild( document.createTextNode(
-                getCountFromDatabase(rowSelected, colSelected, rowArray[1], colArray[0])));
-            tr.cells[2].appendChild( document.createTextNode(
-                getCountFromDatabase(rowSelected, colSelected, rowArray[1], colArray[1])));              
+                getCountFromDatabase(rowSelected, colSelected, rowArray[1], colArray[0], function(result) {
+                    tr2.cells[1].appendChild( document.createTextNode(result));
+                    //return result;
+                });    
+                getCountFromDatabase(rowSelected, colSelected, rowArray[1], colArray[1], function(result) {
+                    //console.log(result);
+                    tr2.cells[2].appendChild( document.createTextNode(result));
+                });  
         }
         else {
-            tr.cells[1].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[0])));
-            tr.cells[2].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[1])));     
+            tr2.cells[1].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[0])));
+            tr2.cells[2].appendChild( document.createTextNode(getNumber(rowArray[1], colArray[1])));     
         }
 
-        tbody.appendChild(tr);        
+        tbody.appendChild(tr2);        
         
         table.appendChild(tbody);
         tablearea.appendChild(table);        

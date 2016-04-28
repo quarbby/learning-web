@@ -1,30 +1,29 @@
 var lengthOfResults;
 var db;
 
-function getCountFromDatabase(rowSelected, colSelected, rowVal, colVal) {
+var getCountFromDatabase = function (rowSelected, colSelected, rowVal, colVal, callback) {
     var sqlStmt = 'SELECT * FROM SHOOTINGS WHERE ' + 
                   String(rowSelected) + ' = \"' + String(rowVal) + '\" AND ' +
                   String(colSelected) + ' = \"' + String(colVal) + '\";'
                   
-    console.log(sqlStmt); 
+    //console.log(sqlStmt); 
     
     db.transaction(function(tx) {
-       tx.executeSql(sqlStmt, [], countResults, null); 
+       tx.executeSql(sqlStmt, [], successCB, null); 
     });
     
-    /*
-    lengthOfResults = db.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM SHOOTINGS WHERE hit = "Hit";', [],
-					   countResults, null);
-				});
-	*/
-	
-    console.log("Length of Results: " + lengthOfResults);
-	
-	return lengthOfResults;
+    function successCB(tx, results) {
+        var len = results.rows.length;
+        callback && callback(len);      // To solve callback not a function
+    }
 }
 
-var createDatabase = function() {
+function countResults (tx, results) {
+    var len = results.rows.length;
+}
+
+
+function createDatabase() {
     db = openDatabase("shootings", "1.0", "Police Shootings", 32678);
 
     db.transaction(function (tx) {  
@@ -45,19 +44,6 @@ var createDatabase = function() {
     clearTable();
     
     insertData();
-
-    /*
-    lengthOfResults = db.transaction(function (tx) {
-        tx.executeSql('SELECT * FROM SHOOTINGS WHERE hit = "Hit";', [],
-					   countResults, null);
-				});
-	*/
-}
-
-function countResults (tx, results) {
-    var len = results.rows.length;
-    lengthOfResults = len;
-    return len;
 }
 
 function clearTable() {
