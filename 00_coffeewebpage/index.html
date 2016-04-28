@@ -7,7 +7,10 @@
     <!-- Page Icon -->
     <link rel="icon" type="image/png" href="img/page-icon.png">
 
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
@@ -15,17 +18,18 @@
     <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="#Header">  
+            <li><a href="#header">  
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.664 21.665"><path d="M2.756 20.725h2.95c.04.257.254.458.523.458h6.706c.27 0 .482-.2.523-.458h2.95c.498 0 .902-.404.902-.903H1.854c0 .5.404.903.902.903zM20.865 11.444c-.752-.61-1.81-.62-2.508-.542.02-.486.03-.983.03-1.5H0c0 4.97.752 8.556 5.51 9.894h7.367c1.885-.53 3.135-1.418 3.964-2.6 1.807-.035 4.712-.746 4.82-3.24.048-1.092-.406-1.698-.795-2.012zm-3.267 3.826c.346-.89.55-1.89.664-2.988.488-.08 1.33-.13 1.754.215.078.064.32.262.293.9-.058 1.293-1.662 1.727-2.712 1.873zM7.49 8.704s3.5-.257 1.897-3.208C8.1 3.126 8.393 1.736 10.04.48c0 0-5.397 1.376-2.25 5.63 1.156 1.855-.3 2.594-.3 2.594z"/><path d="M9.85 8.468s2.804-.59 1.278-2.846c-.554-.978.21-1.327.21-1.327s-1.805.057-1.043 1.608c.61 1.247.43 1.955-.445 2.565z"/></svg>
             </li>
-            <li><a href="#Cafe">Cafe</a></li>
-            <li><a href="#Menu">Menu</a></li>
-            <li><a href="#Story">Story</a></li>
+            <li><a href="#cafe">Cafe</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#story">Story</a></li>
             <li><a href="order.html">Order</a></li>
         </ul>
     </nav>
     
-    <div id="header" name="Header">
+    <!-- Header -->
+    <div id="header">
         <div class="container">
             <div class="row">
                 <h1 id="title-text"> Dawg Coffee</h1>
@@ -34,6 +38,7 @@
         </div>
     </div>
     
+    <!-- Headline -->
     <div id="headline">
         <div class="container">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.664 21.665"><path d="M2.756 20.725h2.95c.04.257.254.458.523.458h6.706c.27 0 .482-.2.523-.458h2.95c.498 0 .902-.404.902-.903H1.854c0 .5.404.903.902.903zM20.865 11.444c-.752-.61-1.81-.62-2.508-.542.02-.486.03-.983.03-1.5H0c0 4.97.752 8.556 5.51 9.894h7.367c1.885-.53 3.135-1.418 3.964-2.6 1.807-.035 4.712-.746 4.82-3.24.048-1.092-.406-1.698-.795-2.012zm-3.267 3.826c.346-.89.55-1.89.664-2.988.488-.08 1.33-.13 1.754.215.078.064.32.262.293.9-.058 1.293-1.662 1.727-2.712 1.873zM7.49 8.704s3.5-.257 1.897-3.208C8.1 3.126 8.393 1.736 10.04.48c0 0-5.397 1.376-2.25 5.63 1.156 1.855-.3 2.594-.3 2.594z"/><path d="M9.85 8.468s2.804-.59 1.278-2.846c-.554-.978.21-1.327.21-1.327s-1.805.057-1.043 1.608c.61 1.247.43 1.955-.445 2.565z"/></svg>
@@ -41,17 +46,101 @@
         </div>
     </div>
     
-    <div name="Cafe">
-        Test
-    </div>
+    <!-- Cafe Info --> 
+    <div id="cafe" class="cafe">
+        <div class="container">
+            <div class="row text-center">
+                <h2>Cafe Information</h2>
+                <div class="col-md-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 396.238 396.238"><path d="M381.238 159.54H15c-8.25 0-15 6.75-15 15v160.405c0 8.25 6.75 15 15 15h366.238c8.25 0 15-6.75 15-15V174.54c0-8.25-6.75-15-15-15zM374.9 322.257c0 5.5-4.5 10-10 10H31.338c-5.5 0-10-4.5-10-10V187.23c0-5.5 4.5-10 10-10H364.9c5.5 0 10 4.5 10 10v135.026z"/><path d="M137.083 253.91c0 27.58-16.762 42.203-37.21 42.203-21.16 0-36.02-16.405-36.02-40.656 0-25.44 15.812-42.083 37.21-42.083 21.873 0 36.02 16.763 36.02 40.537zm-62.173 1.31c0 17.118 9.272 32.454 25.56 32.454 16.404 0 25.677-15.1 25.677-33.287 0-15.93-8.322-32.572-25.56-32.572-17.12 0-25.677 15.81-25.677 33.404zM152.472 215.325c4.993-.833 9.57-1.238 17.89-1.238 10.225 0 17.713 2.378 22.47 6.658 4.397 3.804 7.014 9.63 7.014 16.76 0 7.253-2.14 12.96-6.183 17.12-5.47 5.825-14.385 8.797-24.49 8.797-2.492 0-4.83-.076-6.89-.42-.494-.08-1.43-.093-1.43.947v26.1c0 2.616-2.14 4.757-4.755 4.757h-.833c-2.615 0-4.755-2.14-4.755-4.756v-71.718c0-2.873 1.962-3.007 1.962-3.007zm8.38 38.025c0 .78.48 1.04.732 1.094 2.133.466 4.742.656 7.827.656 12.483 0 20.09-6.062 20.09-17.12 0-10.58-7.488-15.69-18.9-15.69-4.518 0-5.053.085-5.053.085-2.583.41-4.696 2.888-4.696 5.502l.002 25.473zM255.237 252.96c0 2.354-2.14 4.28-4.755 4.28h-21.637c-2.615 0-4.754 2.14-4.754 4.754v19.378c0 2.615 2.14 4.755 4.755 4.755h25.203c2.615 0 4.755 1.952 4.755 4.34 0 2.385-2.14 4.338-4.755 4.338h-35.545c-2.615 0-4.754-2.14-4.754-4.754v-70.614c0-2.614 2.138-4.754 4.753-4.754h33.763c2.614 0 4.755 1.953 4.755 4.338 0 2.388-2.14 4.34-4.754 4.34h-23.42c-2.614 0-4.755 2.14-4.755 4.755v15.812c0 2.615 2.142 4.754 4.757 4.754h21.636c2.615.002 4.754 1.927 4.754 4.28zM276.988 294.807c-2.615 0-4.755-2.14-4.755-4.756V219.44c0-2.615 2.14-4.756 4.755-4.756h1.784c2.614 0 5.898 1.81 7.3 4.018l20.588 32.504c1.4 2.21 3.636 5.857 4.97 8.105l11.098 20.362c.593 1.018.975-.672.823-3.283 0 0-.912-15.702-.912-28.184v-28.77c0-2.614 2.14-4.755 4.756-4.755h.238c2.615 0 4.755 2.142 4.755 4.757v70.613c0 2.615-2.14 4.756-4.755 4.756h-.952c-2.614 0-5.89-1.814-7.276-4.03l-20.396-32.597c-1.387-2.218-3.63-5.86-4.983-8.1l-11.86-21.49c-.105.034-.855-1.442-.855.49 0 .858-.01 1.98.042 3.19 0 0 .63 14.982.63 28.298v29.48c0 2.616-2.14 4.757-4.754 4.757h-.24v.002zM293.455 143.54l-78.077-78.075c-.356-.41-.268-1.124-.182-1.815.038-.307.07-.6.07-.857 0-9.098-7.4-16.5-16.5-16.5s-16.5 7.402-16.5 16.5c0 .337.014.67.043 1.062.03.396.07.94-.657 1.78l-79.32 79.32c-1.474 1.473-1.345 2.542-1.137 3.048.208.506.868 1.356 2.952 1.367l9.693.053h.042c2.865 0 6.835-1.64 8.85-3.655l67.8-67.8c.432-.387.862-.416 1.02-.34 4.506 2.202 9.86 2.21 14.373.032.065-.032.28-.145.812.376l66.318 66.318c2.788 2.79 8.284 5.06 12.306 5.06l5.692-.032c2.077-.01 3.48-.647 3.95-1.79.47-1.145-.078-2.584-1.547-4.052zm-179.573 5.38v.002-.002z"/></svg>
+                    <p>Mon-Fri: 7am&ndash;7pm</p>
+                    <p>Sat-Sun: 9am&ndash;7pm</p>
+                </div>
+                <div class="col-md-4">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792 792"><path d="M396.065 792l-10.155-17.896c-1.455-2.568-146.63-258.487-186.97-333.42-25.627-47.656-55.543-125.468-55.543-187.954C143.397 113.377 256.72 0 396.012 0c139.275 0 252.59 113.377 252.59 252.73 0 60.357-27.956 141.853-54.272 187.9-47.1 82.137-186.792 330.928-188.192 333.428L396.065 792zm-.053-768.78c-126.49 0-229.394 102.96-229.394 229.51 0 54.436 26.502 128.1 52.764 176.947C253.354 492.774 362.11 685 395.958 744.747c33.09-58.897 138.5-246.4 178.2-315.65 25.172-44.042 51.21-122.07 51.21-176.367.015-126.55-102.883-229.51-229.356-229.51zm0 343.43c-63.214 0-114.64-51.442-114.64-114.67 0-63.245 51.426-114.702 114.64-114.702 63.19 0 114.606 51.457 114.606 114.7-.007 63.23-51.416 114.67-114.606 114.67zm0-206.15c-50.412 0-91.418 41.037-91.418 91.48 0 50.426 41.007 91.45 91.418 91.45 50.388 0 91.388-41.03 91.388-91.45-.008-50.443-41.008-91.48-91.388-91.48z"/></svg>
+                    <br>
+                    <a href="https://www.google.com/maps/place/4214+University+Way+NE,+Seattle,+WA+98105" target="_blank"><img src="img/map.png" id="map-img" alt="Location of Dawg Coffee"></a>
+                </div>
+                <div class="col-md-4">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288.937 288.938"><path d="M207.967 272.338c-22.815 12.03-46.076 16.6-73.897 16.6-68.084 0-125.788-49.793-125.788-129.508C8.282 73.9 67.642 0 159.832 0c72.242 0 120.823 50.642 120.823 119.973 0 62.272-34.88 98.81-73.9 98.81-16.633 0-31.975-11.218-30.728-36.537h-1.658c-14.536 24.507-33.637 36.538-58.55 36.538-24.07 0-44.826-19.533-44.826-52.325 0-51.486 40.67-98.374 98.373-98.374 17.846 0 33.64 3.717 44.418 8.723l-14.096 75.12c-6.222 31.574-1.26 46.11 12.442 46.51 21.19.406 44.857-27.824 44.857-75.993 0-60.176-36.14-103.38-100.507-103.38-67.644 0-124.538 53.58-124.538 137.86 0 69.337 45.267 112.096 106.687 112.096 23.667 0 45.676-4.997 62.71-14.535l6.625 17.85zm-22.82-179.374c-4.157-1.218-11.225-2.876-20.763-2.876-36.538 0-66.02 34.448-66.02 74.717 0 18.286 9.13 31.575 27.415 31.575 24.07 0 46.072-30.73 50.64-56.494l8.726-46.922z"/></svg><br>
+                    <ul>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <a href="mailto:dawgcoffe@gmail.com">dawgcoffe@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <a href="tel:206-555-1212">206-555-1212</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-twitter"></i>
+                            <a href="https://twitter.com/dawgcoffee">@dawgcoffee</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu" class="menu">
+            <div class="row">
+                <h2>Menu</h2>
+                <!-- To centeralise, set offset equal to half the rem size of row -->
+                <div class="col-sm-4 col-sm-offset-2">
+                    <h3>Drinks</h3>
+                    <dl>
+                        <dt>Espresso</dt>
+                            <dd>dark and rich, pulled with care</dd>
+						<dt>Latte</dt>
+							<dd>milky and sweet, with various syrups and toppings</dd>
+						<dt>Mocha</dt>
+							<dd>chocolate, milk and espresso, what could be better?</dd>
+                    </dl>
+                </div>
+                <div class="col-sm-4 col-sm-offset-1">
+					<h3>Treats</h3>
+						<dl>
+							<dt>Muffins &amp; Scones</dt>
+								<dd>banana, blueberry, chocolate, and pumpkin</dd>
+							<dt>Cookies</dt>
+								<dd>chocolate chunk, peanut butter, oatmeal</dd>
+							<dt>Breads</dt>
+								<dd>zucchini, banana, lemon, ginger</dd>
+						</dl>
+                </div>
+            </div> 
+        </div>
+        
+        <!-- Story --> 
+        <div id="story" class="story">
+            <div class="container">
+                <div class="row">
+                    <h2>Our Story</h2>
+                    <img src="img/story.jpg" alt="our story">
+    				<p>Lorizzle ipsizzle dolizzle check it out amet, tellivizzle adipiscing break it down. Nullizzle mah nizzle velizzle, mah nizzle volutpizzle, suscipit quizzle, sheezy vel, you son of a bizzle. Izzle eget boofron. Sizzle erizzle. Bizzle izzle doggy dapibizzle turpizzle fo shizzle gangsta. Maurizzle pellentesque i'm in the shizzle izzle turpizzle. Shizznit izzle tortor. Pellentesque eleifend dang the bizzle. In hac doggy platea dictumst. Owned dapibizzle. Curabitur tellizzle urna, pretium its fo rizzle, yo mamma izzle, eleifend vitae, nunc. Funky fresh mah nizzle. Integizzle the bizzle crunk yippiyo purus.</p>
+                </div>
+            </div>
+        </div>
     
-    <div name="Menu">
-        Test 
-    </div>
-    
-    <div name="Story">
-        Test
-    </div>
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p>&copy; 2015 Dawg Coffee</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p id="attribution">Icons by 
+                            <a href="http://www.freepik.com" title="Freepik">Freepik</a>, 
+                            <a href="http://www.bogdanrosu.com" title="Bogdan Rosu">Bogdan Rosu</a>
+                            from 
+                            <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> 
+                            is licensed under 
+                            <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
+                        </p>                    
+                    </div>
+                </div>
+            </div>
+        </div>
     
 </body>
 
