@@ -1,0 +1,138 @@
+/* IMPORTS */
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300,300italic");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+
+/* GENERAL STYLES */
+body {
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: #E9EAEE;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", "Helvetica Neue", "Helvetica", sans-serif;
+}
+
+svg {
+    height: 1em;
+}
+
+/* NAVIGATION BAR */
+nav {
+    position: fixed;
+    background-color: #181C22;
+    width: 100%;
+    font-size: 16px;
+    z-index: 999;
+}
+
+nav li {
+    display: inline;
+    font-variant: small-caps;
+}
+
+nav a {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    color: white;
+}
+
+nav a:hover {
+    text-decoration: none;
+    color: #D87E28;
+}
+
+nav svg {
+    margin-left: 15px;
+    fill: white;
+}
+
+/* HEADER */
+#header {
+    padding-top: 3em;
+}
+
+#header p {
+    visibility: hidden;
+}
+
+/* HEADLINE */
+#headline {
+    font-style: italic;
+}
+
+#headline svg {
+    visibility: hidden;
+}
+
+/* FOR SCREENS LARGER THAN 768px */
+@media screen and (min-width: 767px) {
+    body {
+        font-size: 20px;
+    }
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+    
+    /* NAVIGATION BAR */
+    
+    nav {
+        background-color: rgba(24, 28, 34, 0.8);
+    }
+    
+    nav a {
+        padding-left: 1em;
+    }
+    
+    /* HEADER */
+    #header { 
+        color: white;
+        text-align: right;
+    }
+    
+    #header p {
+        visibility: visible;
+    }
+    
+    #header {
+        background-image: url("../img/background-sm.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        min-height: 550px;
+    }
+    
+    #title-text { 
+        font-size: 4em;
+    }
+    
+    /* HEADLINE */
+    #headline {
+        font-size: 1.25em;
+        text-align: center;
+        margin: 3em 0 3em 0;
+    }
+    
+    #headline svg {
+        visibility: visible;
+        height: 1.5em;
+        margin-bottom: 1em;
+    }
+}
+
+/* FOR SCREENS LARGER THAN 992px */
+@media screen and (min-width: 991) {
+    #header {
+        background-image: url("../img/background-md.jpg");
+    }
+}
+
+/* FOR SCREENS LARGER THAN 1200px */
+@media screen and (min-width: 1199) {
+    #header {
+        background-image: url("../img/background-lg.jpg");
+    }
+}
