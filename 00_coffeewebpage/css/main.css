@@ -98,6 +98,10 @@ nav svg {
     fill: #aa7243;
 }
 
+.cafe img {
+    padding-bottom: 2em;
+}
+
 .cafe h2 {
     text-align: center;
     color: #d87e28;
@@ -105,7 +109,7 @@ nav svg {
 
 /* MENU */
 .menu {
-    background-color: #dbdce3;
+    background-color: #E9EAEE;
 }
 
 .menu h2 {
