@@ -1,0 +1,223 @@
+/* IMPORTS */
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300,300italic");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+
+/* GENERAL STYLES */
+$fallbackFonts: 'Helvetica Neue', Helvetica, sans-serif;
+$background-color: #E9EAEE;
+$background-grey-dark: #dbdce3; 
+$background-grey-light: #E9EAEE;
+$brown-h2-text-color: #d87e28;
+
+body {
+    font-family: "Lato", $fallbackFonts;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: $background-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", $fallbackFonts;
+}
+
+h2 {
+    text-align: center;
+    color: $brown-h2-text-color;
+}
+
+svg {
+    height: 1em;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* NAVIGATION BAR */
+nav {
+    position: fixed;
+    background-color: #181C22;
+    width: 100%;
+    font-size: 16px;
+    z-index: 999;
+    
+    li {
+        display: inline;
+        font-variant: small-caps;
+    }
+    
+    a {
+        padding: 1.0em 0.5em 0.5em 0.5em;
+        color: white; 
+    }
+    
+    a:hover {
+        text-decoration: none;
+        color: brown-h2-text-color;
+    }
+    
+    svg {
+        margin-left: 15px;
+        fill: white;
+    }
+}
+
+/* HEADER */
+#header {
+    padding-top: 3em;
+    
+    p {
+        visibility: hidden;
+    }
+}
+
+/* HEADLINE */
+#headline {
+    font-style: italic;
+}
+
+#headline svg {
+    visibility: hidden;
+}
+
+
+/* CAFE INFO */
+.cafe {
+    background-color: $background-grey-dark;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    
+    i {
+        margin-right: 5px;
+    }
+    
+    ul {
+        list-style-type: none;
+    }
+}
+
+#map-img {
+    border-radius: 5px;
+}
+
+.cafe svg {
+    margin: 1em 1em 1em 1em;
+    width: 2em;
+    height: 2em;
+    fill: #aa7243;
+}
+
+.cafe img {
+    padding-bottom: 2em;
+}
+
+/* MENU */
+.menu {
+    background-color: $background-grey-light;
+}
+
+dd {
+    font-style: italic;
+    margin-left: 1em;
+}
+
+/* OUR STORY */
+.story {
+    background-color: $background-grey-dark;
+    
+    h2 {
+        text-align: center;
+        color: brown-h2-text-color;
+    }
+    
+    img {
+        float: right;
+        max-height: 300px;
+        margin-left: 2em;
+        border-radius: 5px;
+        margin-bottom: 2em;
+    }
+}
+
+/* FOOTER */
+.footer {
+    border-top: 3px solid brown-h2-text-color;
+    background-color: #afb3c2;
+    font-size: 12px;
+    padding: 1em 1em 1em 1em;
+    clear: both;
+}
+
+/* FOR SCREENS LARGER THAN 768px */
+@media screen and (min-width: 767px) {
+    body {
+        font-size: 20px;
+    }
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+    
+    /* NAVIGATION BAR */
+    
+    nav {
+        background-color: rgba(24, 28, 34, 0.8);
+    }
+    
+    nav a {
+        padding-left: 1em;
+    }
+    
+    /* HEADER */
+    #header {
+        color: white;
+        text-align: right;
+        background-image: url("../img/background-sm.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        min-height: 550px;
+    }
+    
+    #title-text { 
+        font-size: 4em;
+    }
+    
+    /* HEADLINE */
+    #headline {
+        font-size: 1.25em;
+        text-align: center;
+        margin: 3em 0 3em 0;
+    }
+    
+    #headline svg {
+        visibility: visible;
+        height: 1.5em;
+        margin-bottom: 1em;
+    }
+    
+    /* OUR STORY */
+    .story img {
+        max-height: 400px;
+    }
+    
+    .footer #attribution {
+        text-align: right;
+    }
+}
+
+/* FOR SCREENS LARGER THAN 992px */
+@media screen and (min-width: 991) {
+    #header {
+        background-image: url("../img/background-md.jpg");
+    }
+}
+
+/* FOR SCREENS LARGER THAN 1200px */
+@media screen and (min-width: 1199) {
+    #header {
+        background-image: url("../img/background-lg.jpg");
+    }
+}
