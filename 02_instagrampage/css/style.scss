@@ -203,4 +203,53 @@ header {
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+        
+        .cog {
+            font-family: $sub-font;
+            font-size: 8px;
+            background: $white;
+            color: $mediumgrey;
+            letter-spacing: 1px;
+            padding: $padding*1.5;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
+         .caption {
+            font-family: $sub-font;
+            font-size: 12px;
+            background: $white;
+            color: $mediumgrey;
+            letter-spacing: 1px;
+            padding: $padding*1.5;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }      
+                
     }
+
+footer {
+    color: white;
+}
+
+/*
+&:hover {
+    background: lighten($grey, 5%);
+}
+*/
+
+.footer-bottom {
+    //background: $white;
+    padding: $padding $padding*6;
+    border-top: 2px solid darkorange;
+    letter-spacing: 2px;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+ 
+    @media screen and (min-width: $screen-md) {
+        padding: $padding*4 0;
+    }
+}
