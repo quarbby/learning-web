@@ -5945,5 +5945,44 @@ header {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; }
+  .photo-box .cog {
+    font-family: "Montserrat", sans-serif;
+    font-size: 8px;
+    background: #FFF;
+    color: #9b9b9b;
+    letter-spacing: 1px;
+    padding: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .photo-box .caption {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    background: #FFF;
+    color: #9b9b9b;
+    letter-spacing: 1px;
+    padding: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+
+footer {
+  color: white; }
+
+/*
+&:hover {
+    background: lighten($grey, 5%);
+}
+*/
+.footer-bottom {
+  padding: 10px 60px;
+  border-top: 2px solid darkorange;
+  letter-spacing: 2px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase; }
+  @media screen and (min-width: 992px) {
+    .footer-bottom {
+      padding: 40px 0; } }
 
 /*# sourceMappingURL=style.css.map */
