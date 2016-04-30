@@ -5877,6 +5877,28 @@ header {
       header h2 {
         width: 100%;
         margin: 0; } }
+  header .btn {
+    background-color: #F08080;
+    width: 100%;
+    text-align: center;
+    margin: 0px auto;
+    border: none; }
+  header #form-input {
+    font-family: "Lato", sans-serif;
+    font-size: 8px;
+    margin-top: 20px; }
+  header .input-group {
+    width: 30%;
+    text-align: center;
+    margin: 0px auto; }
+
+.form-control:focus {
+  border-color: #FF0000;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); }
+
+.btn:focus, .btn:active, .btn:active:focus {
+  outline: #FF0000;
+  border-color: #FF0000; }
 
 .fancy-font {
   font-family: "Kaushan Script", cursive; }
@@ -5912,6 +5934,11 @@ header {
 
 .instagram-wrap {
   background: #eeeeee; }
+  .instagram-wrap #refresh-btn {
+    margin-left: 10px;
+    cursor: pointer; }
+    .instagram-wrap #refresh-btn:hover {
+      opacity: 0.8; }
 
 .instagram-content h3 {
   text-transform: uppercase;
@@ -5929,7 +5956,9 @@ header {
   .photo-box .image-wrap .likes {
     position: absolute;
     bottom: 5px;
-    left: 15px;
+    left: 10px;
+    height: 75px;
+    width: 100%;
     padding: 5px;
     background: #000;
     background: rgba(0, 0, 0, 0.4);

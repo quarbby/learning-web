@@ -1,2 +1,4 @@
-#### For Mac #####
 .DS_Store
+
+**.map
+*.sass-cache
