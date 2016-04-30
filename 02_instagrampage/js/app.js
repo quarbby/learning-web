@@ -1,15 +1,20 @@
-var feed;
-var category = "penguins";
+var feed = null;
 
 $(function() {
-    loadFeed(); 
+    loadFeed("penguins"); 
 });
 
 function onBtnClick() {
-    category = $(".input").val().toLowerCase();
+    var categoryArr = $(".input").tagsinput('items');
+    $('.input-category').text("on " + categoryArr);
+    for (var i=0; i<categoryArr.length; i++) {
+        loadFeed(categoryArr[i]);
+    }
 }
 
-function loadFeed() {
+function loadFeed(category) {
+    if (category == "") { category = "penguins"; }
+    console.log(category);
     
     // Clear div
     $("#_instafeed").html("");
@@ -29,7 +34,7 @@ function loadFeed() {
             var captions = {'desc': '', 'confidence': ''};
             
             function successCB(data) {
-                console.log(data);
+                //console.log(data);
                 var desc = data.description.captions[0].text;
                 var confidence = data.description.captions[0].confidence;  
                 //captions.push([desc, confidence]); 
@@ -71,6 +76,7 @@ function loadFeed() {
                     caption: image.caption.text,
                     //likes: image.likes.count,
                     confidence: captions['confidence'],
+                    username: image.user.username,
                     //date: image.date,
                     //imgUrl: imgUrl.substring(0,20)
                     msdesc: captions['desc']
@@ -82,19 +88,30 @@ function loadFeed() {
             $('#_instafeed').html(imgs);
         },
         resolution: 'standard_resolution',
+        template: '<div class="photo-box-ms"><div class="col-md-4">' +
+                  '<div class="photo-box"><div class="image-wrap">' +
+                   '<a href="{{link}}" target="_blank"><img src="{{image}}"></a>' +
+                   '</div></div></div>' +
+                   '<div class="col-md-8"><div class="ms-wrap">' +
+                   '<span class="ms-says">Microsoft says...</span><br>' +
+                   '<div class="ms-words">I am {{confidence}} \% sure this is {{msdesc}}</div></div>' +
+                   '<div class="user-wrap"><span class="user-says">{{username}} says....</span><br>' +
+                   '<div class="user-words">{{caption}}</div>' +
+                   '</div></div></div>'
+        /*
         template: '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">' +
                     '<div class="photo-box"><div class="image-wrap">' +
                     '<a href="{{link}}"><img src="{{image}}"></a>' +
                     '<div class="likes">I am {{confidence}} \% sure that this is {{msdesc}}</div></div>' +
                     '<div class="description">{{caption}}' +
                     '</div></div></div>'
+        */            
     });
     feed.run();
  
 }
 
 /*==== INFINITE SCROLLING ======*/
-
 $(window).scroll(function(){
   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) 
     {

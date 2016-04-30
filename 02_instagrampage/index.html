@@ -7,10 +7,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/instafeed.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-tagsinput.js"></script>
     
     <script type="text/javascript" src="js/app.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-tagsinput.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
@@ -30,9 +32,9 @@
             <div id="form-input">
                 <form id="form" method="POST">
                     <div class="input-group">
-                    <input class="form-control input" placeholder="search a tagname, e.g. penguins" id="url">
+                    <input id="tags-input" type="text" class="form-control input" data-role="tagsinput" placeholder="e.g. penguins, birds">
                         <span class="input-group-btn">
-                        <button class="btn btn-danger" type="button" onclick="onBtnClick(); return false;">
+                        <button class="btn btn-danger" type="submit" onclick="onBtnClick(); return false;">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                         </span>
@@ -57,14 +59,38 @@
             <div class="row">
                 <!-- Instagram Feed Template --> 
                 <div class="col-xs-12">
-                    <h3>Latest Photos <span class="input-category">on Penguins
+                    <h3>Latest Photos <span class="input-category" >on Penguins
                     <span id="refresh-btn" onclick="loadFeed()">
                         <i class="fa fa-refresh" aria-hidden="true"></i></span>
                     </h3>
                     <div class="row photos-wrap">
                         <div id="_instafeed"></div>
+
                         <!--
-                        <div class="col-xs-12 colsm-6 col-md-4 col-lg-3">
+                        <div class="photo-box-ms">
+                            <div class="col-md-4">
+                                <div class="photo-box">
+                                    <div class="image-wrap">
+                                        <img src="img/bridge.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="ms-wrap">
+                                    <span class="ms-says">Microsoft says...</span><br>
+                                    <div class="ms-words">I am 20% confident this is... a very very very very very long span of text because
+                                        you know just testing asjkhdakjsdhakj shdkjasdkja skjdhaksjdh kajshdkj ahsdkj haskdj hakjsd hakjsd haksjd hakjsd aksdj haskjd hakj </div>
+                                </div>
+                                <div class="user-wrap">
+                                    <span class="user-says">User says....</span><br>
+                                    <div class="user-words">This is a ...</div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        
+                        <!--
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="photo-box">
                                 <div class="image-wrap">
                                     <img src="img/bridge.jpg">
@@ -77,6 +103,7 @@
                             </div>
                         </div>
                         -->
+
                     </div>
                 </div>
             </div> 
