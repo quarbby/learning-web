@@ -135,6 +135,35 @@ header {
 
 .bootstrap-tagsinput {
     display: block;
+    box-shadow: none;
+    border: none;
+    line-height: none;
+    font-size: 12px;
+}
+
+.bootstrap-tagsinput#ms-tags {
+    background-color: inherit;
+    margin: $margin 0 0 $margin;
+}
+
+.bootstrap-tagsinput #ms-tags-tag {
+    background-color: grey;
+    margin-right: $margin/2;
+}
+
+.bootstrap-tagsinput#user-tags {
+    background-color: inherit;
+    margin: $margin 0 0 $margin;
+}
+
+.bootstrap-tagsinput #user-tags-tag {
+    background-color: grey;
+    margin-right: $margin/2;
+}
+
+.label {
+    font-weight: normal !important;
+    font-size: 100%;
 }
 
 .form-control:focus {
@@ -145,54 +174,6 @@ header {
 .btn:focus, .btn:active, .btn:active:focus {
     outline: #FF0000;
     border-color: #FF0000;
-    //box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
-}
-
-.fancy-font {
-    font-family: $fancy-font;
-}
-
-/* FOR SOCIAL PART - UNUSED NOW  */
-.social {
-    position: absolute;
-    top: 55px;
-    right: 50px;
-    overflow: hidden;
-    
-    span {
-        color: white;
-    }
-
-    a {
-        float: left;
-        width: 26px;
-        height: 26px;
-        margin: 0 5px;
-        text-indent: -9999px;
-        background: url(../images/social-sprite.png) no-repeat;
-        opacity: 0.8;
-
-        &:hover {
-            opacity: 1.0;
-        }
-
-        @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (-min-device-pixel-ratio: 2) {
-            background: url(../images/social-sprite@2x.png) no-repeat;
-            background-size: 76px 26px;
-        }
-
-        &.facebook {
-            background-position: 0px 0px;
-        }
-
-        &.twitter {
-            background-position: -25px 0px;
-        }
-
-        &.instagram {
-            background-position: -50px 0px;
-        }
-    }
 }
 
 .instagram-wrap {
@@ -241,13 +222,21 @@ header {
         background: #cdc9c9;
         min-height: 100px;
         margin-top: $margin*2; 
-        margin-bottom: $margin;
     }
     
     .user-wrap {
         background: #faebd7;
         min-height: 100px;
-        margin-top: $margin;
+        
+        a {
+            margin-left: $margin;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
     }
     
     .ms-says, .user-says {

@@ -5,6 +5,9 @@
     <title>Captioning your Instagram</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Kaushan+Script|Montserrat' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/tagit.js"></script>
+    
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/instafeed.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-tagsinput.js"></script>
@@ -13,6 +16,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-tagsinput.css">
+    <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
@@ -32,7 +36,7 @@
             <div id="form-input">
                 <form id="form" method="POST">
                     <div class="input-group">
-                    <input id="tags-input" type="text" class="form-control input" data-role="tagsinput" placeholder="e.g. penguins, birds">
+                    <input id="tags-input" type="text" class="form-control input" data-role="tagsinput" placeholder="Enter tags: e.g. penguins, birds">
                         <span class="input-group-btn">
                         <button class="btn btn-danger" type="submit" onclick="onBtnClick(); return false;">
                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -43,16 +47,6 @@
             </div>   
         </div>
 
-        <!--
-        <div class="social">
-            <span class="fancy-font">I might put stuff here</span>
-
-            <a class="facebook" href="#">Facebook</a>
-            <a class="twitter" href="#">Twitter</a>
-            <a class="instagram" href="#">Instagram</a>
-        </div>
-        -->
-
     </header>
     <section class="instagram-wrap">
         <div class="container">
@@ -60,7 +54,7 @@
                 <!-- Instagram Feed Template --> 
                 <div class="col-xs-12">
                     <h3>Latest Photos <span class="input-category" >on Penguins
-                    <span id="refresh-btn" onclick="loadFeed()">
+                    <span id="refresh-btn" onclick="refreshFeed()">
                         <i class="fa fa-refresh" aria-hidden="true"></i></span>
                     </h3>
                     <div class="row photos-wrap">
@@ -80,10 +74,18 @@
                                     <span class="ms-says">Microsoft says...</span><br>
                                     <div class="ms-words">I am 20% confident this is... a very very very very very long span of text because
                                         you know just testing asjkhdakjsdhakj shdkjasdkja skjdhaksjdh kajshdkj ahsdkj haskdj hakjsd hakjsd haksjd hakjsd aksdj haskjd hakj </div>
+                                    <div class="bootstrap-tagsinput" id="ms-tags">
+                                        <span class="tag label bg-success" id="ms-tags-tag">Testing Tag</span>
+                                        <span class="tag label bg-success" id="ms-tags-tag">Testing Tag 2</span>
+                                    </div>
                                 </div>
                                 <div class="user-wrap">
                                     <span class="user-says">User says....</span><br>
                                     <div class="user-words">This is a ...</div>
+                                    <div class="bootstrap-tagsinput" id="user-tags">
+                                        <span class="tag label bg-success" id="user-tags-tag">Testing Tag</span>
+                                        <span class="tag label bg-success" id="user-tags-tag">Testing Tag 2</span>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -114,16 +116,6 @@
         <section class="footer-bottom">
             2016 &copy; quarbby. All rights reserved.
         </section>        
-        <!--
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <h4>Get in touch</h4>
-                    <p class="about-text">I shoot, design and write. Don't hesitate and get in touch with me if you need some creative work done. I always work to achieve my best and fulfil client needs</p>
-                </div>
-            </div>
-        </div>
-        -->
     </footer>
 
  
