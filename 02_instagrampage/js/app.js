@@ -1,5 +1,12 @@
 var feed = null;
 
+/*
+$(document).on({
+    ajaxStart: function() { console.log("ajax start"); $(".modal").show();  },
+    ajaxStop: function() { console.log("ajax end"); $(".modal").hide(); }    
+});
+*/
+
 $(function() {
     $('input').tagsinput({
     tagClass: function(item) {
@@ -7,7 +14,9 @@ $(function() {
     }
     });
     
-    loadFeed("penguins"); 
+    //showModal();
+    loadFeed('Penguins');
+    //hideModal();
 });
 
 function onBtnClick() {
@@ -37,6 +46,12 @@ function loadFeed(category) {
         links: true,
         limit: 3,
         sortBy: 'most-recent',
+        before: function() {
+            $(".modal").show();   
+        },
+        after: function() {
+            $(".modal").hide();     
+        },
         success: function(images) {
             
             var captions = {'desc': '', 'confidence': '', 'tags': []};
@@ -138,7 +153,7 @@ function loadFeed(category) {
                    '</div></div></div>' +
                    '<div class="col-md-8"><div class="ms-wrap">' +
                    '<span class="ms-says">Microsoft says...</span><br>' +
-                   '<div class="ms-words">I am ' +  captions['confidence'] + '\% sure this is' + captions['desc']  + '</div>' +
+                   '<div class="ms-words">I am ' +  captions['confidence'] + '\% sure this is ' + captions['desc']  + '</div>' +
                    msTagsCode + '</div>' +
                    '<div class="user-wrap"><a href=\"https://www.instagram.com/' + image.user.username +  '><span class="user-says">' + image.user.username + 'says....</span></a><br>' +
                    '<div class="user-words">' + image.caption.text + '</div>' + userTagsCode + 
@@ -149,6 +164,7 @@ function loadFeed(category) {
                 //$('#_instafeed').append(result);
             }
             $('#_instafeed').html(imgs);
+            
         },
         resolution: 'standard_resolution',
         /*
@@ -173,6 +189,7 @@ function loadFeed(category) {
         */            
     });
     feed.run();
+    //hideModal();
  
 }
 

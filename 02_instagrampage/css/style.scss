@@ -144,11 +144,14 @@ header {
 .bootstrap-tagsinput#ms-tags {
     background-color: inherit;
     margin: $margin 0 0 $margin;
+    max-width: 600px;
+    overflow-x: hidden;
 }
 
 .bootstrap-tagsinput #ms-tags-tag {
     background-color: grey;
     margin-right: $margin/2;
+    overflow-x: hidden;
 }
 
 .bootstrap-tagsinput#user-tags {
@@ -222,11 +225,13 @@ header {
         background: #cdc9c9;
         min-height: 100px;
         margin-top: $margin*2; 
+        overflow-x: hidden;
     }
     
     .user-wrap {
         background: #faebd7;
         min-height: 100px;
+        overflow-x: hidden;
         
         a {
             margin-left: $margin;
@@ -251,6 +256,7 @@ header {
         font-family: $sub-font;
         font-size: 12px;
         margin-left: $margin*5;
+        text-overflow: ellipsis;
     }
     
 }
@@ -337,4 +343,24 @@ footer {
     @media screen and (min-width: $screen-md) {
         padding: $padding*4 0;
     }
+}
+
+/* Loading animation */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        50%;
+    left:       50%;
+    height:     50%;
+    width:      50%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 20px;
+    font-weight: 700px;   
+    font-family: $main-font;        
 }

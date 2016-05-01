@@ -5903,11 +5903,14 @@ header {
 
 .bootstrap-tagsinput#ms-tags {
   background-color: inherit;
-  margin: 10px 0 0 10px; }
+  margin: 10px 0 0 10px;
+  max-width: 600px;
+  overflow-x: hidden; }
 
 .bootstrap-tagsinput #ms-tags-tag {
   background-color: grey;
-  margin-right: 5px; }
+  margin-right: 5px;
+  overflow-x: hidden; }
 
 .bootstrap-tagsinput#user-tags {
   background-color: inherit;
@@ -5959,10 +5962,12 @@ header {
   .photo-box-ms .ms-wrap {
     background: #cdc9c9;
     min-height: 100px;
-    margin-top: 20px; }
+    margin-top: 20px;
+    overflow-x: hidden; }
   .photo-box-ms .user-wrap {
     background: #faebd7;
-    min-height: 100px; }
+    min-height: 100px;
+    overflow-x: hidden; }
     .photo-box-ms .user-wrap a {
       margin-left: 10px;
       text-decoration: none;
@@ -5978,7 +5983,8 @@ header {
   .photo-box-ms .ms-words, .photo-box-ms .user-words {
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    text-overflow: ellipsis; }
 
 .photo-box {
   margin: 0 0 30px 0; }
@@ -6044,5 +6050,21 @@ footer {
   @media screen and (min-width: 992px) {
     .footer-bottom {
       padding: 40px 0; } }
+
+/* Loading animation */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.8) url("http://i.stack.imgur.com/FhHRx.gif") 50% 50% no-repeat;
+  transform: translate(-50%, -50%);
+  color: red;
+  font-size: 20px;
+  font-weight: 700px;
+  font-family: "Lato", sans-serif; }
 
 /*# sourceMappingURL=style.css.map */
