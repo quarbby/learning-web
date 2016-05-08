@@ -1,0 +1,214 @@
+
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
+@import url(http://fonts.googleapis.com/css?family=Raleway:300,400);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+$fallbackFonts: 'Helvetica Neue', Helvetica, sans-serif;
+$background-color: #E9EAEE;
+$accent-dark-color: #BC6026;
+$accent-light-color: #D87E28;
+$nav-background: #181C22;
+$link-transition: all 0.3s;
+
+body {
+    font-family: Lato, $fallbackFonts;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: $background-color;
+}
+
+h1, h2, h3, h4 {
+    font-family: Raleway, $fallbackFonts;
+}
+
+h2 {
+    color: $accent-dark-color;
+    fill: $accent-dark-color;
+}
+
+svg {
+    height: 1em;
+}
+
+.rounded-edges {
+    border-radius: 5px;
+}
+
+nav {
+    background-color: $nav-background;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 16px;
+    color: #FFF;
+    z-index: 1;
+
+    ul {
+        padding-left: 15px;
+        margin-bottom: 0;
+    }
+
+    li {
+        display: inline-block;
+        padding: 0.5em;
+        font-variant: small-caps;
+    }
+
+    a {
+        transition: $link-transition;
+        color: #FFF;
+        fill: #FFF;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+        color: $accent-light-color;
+        fill: $accent-light-color;
+        text-decoration: none;
+    }
+}
+
+
+header {
+    padding-top: 3em;
+    position: relative;
+
+    .motto {
+        display: none;
+    }
+    .banner-image {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+section {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+section:nth-of-type(even) {
+    background-color: darken($background-color, 5%);
+}
+
+#headline {
+    font-style: italic;
+
+    svg {
+        display: none;
+    }
+}
+
+#cafe {
+    text-align: center;
+}
+
+dd {
+    margin-left: 1em;
+    font-style: italic;
+}
+
+#story img {
+    float: right;
+    max-height: 300px;
+    margin-left: 1em;
+}
+
+footer {
+    clear: both;
+    padding-top: 1em;
+    font-size: 12px;
+    border-top: 3px solid $accent-light-color;
+    background-color: darken($background-color, 20%);
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    nav {
+        background-color: transparentize(#181C22, 0.2);
+
+        li {
+            padding-left: 1em;
+            padding-right: 1em;            
+        }
+    }
+
+    header {
+        text-align: right;
+        min-height: 550px;
+        color: #FFF;
+
+        .banner-image {
+            background-image: url(../img/background-sm.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;            
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        .motto {
+            display: block;
+        }
+    }
+
+    #headline {
+        font-size: 1.25em;
+        text-align: center;
+        padding-top: 3em;
+        padding-bottom: 3em;
+
+        svg {
+            display: inline-block;
+            height: 1.5em;
+            fill: $accent-dark-color;
+            margin-bottom: 1em;            
+        }    
+    }
+
+    #story img {
+        max-height: 400px;
+    }
+
+    footer .row > div:last-of-type {
+        text-align: right;
+    }
+}
+
+@media (min-width: 992px) {
+    header {
+        .banner-image {
+            background-image: url(../img/background-md.jpg);
+        }
+    }
+
+    header {
+        h1 {
+            font-size: 4em;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    header {
+        .banner-image {
+            background-image: url(../img/background-lg.jpg);
+        }
+    }
+}
