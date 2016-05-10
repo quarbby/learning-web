@@ -1,0 +1,17 @@
+#game-board {
+	width: 100%;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	float: left;
+	border: 5px black;
+}
+
+#game-board img {
+	height: 15%;
+	width: 15%;
+	padding: 5px;
+	box-sizing: border-box;
+	background-color: black;
+}
