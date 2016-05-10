@@ -110,50 +110,20 @@ function drawGame(tilePairs) {
     gameBoard.empty();
     
     var row = $(document.createElement('div'));
-    //row.addClass('flip-container');
+    row.addClass('row');
     _.forEach(tilePairs, function(tile, idx){
         if ((idx % 4) == 0) {
             // Every 4 tiles create new row
             gameBoard.append(row);
             row = $(document.createElement('div'));
-            //row.addClass('flip-container');
+            row.addClass('row');
         }
         
-        var flipContainer = $(document.createElement('span'));
-        flipContainer.addClass('flip-container');
-
-        var flipperDiv = $(document.createElement('span'));
-        flipperDiv.addClass('flipper');
-        flipperDiv.addEventListener('click', function(){
-                   $(this).toggleClass("flipped"); }, false);
-
-        var frontDiv = $(document.createElement('span'));
-        frontDiv.addClass('front');
-        
-        var frontImg = $(document.createElement('img'));
-        frontImg.attr({
-           src: 'img/tile-back.png',
-           alt: 'placeholder'
-        });
-
-        frontImg.appendTo(frontDiv);
-
-        var backDiv = $(document.createElement('span'));
-        backDiv.addClass('back');
-        
-        var backImg = $(document.createElement('img'));
-        backImg.attr({
-           src: 'img/tile' + tile.tileNum + '.jpg',
-           alt: 'tile ' + tile.tileNum
-        });
-        backImg.data('tile', tile);
-        
-        backImg.appendTo(backDiv);
-
-        frontDiv.appendTo(flipperDiv);
-        backDiv.appendTo(flipperDiv);
-        
-        flipperDiv.appendTo(flipContainer);
+        var flipContainer = '<div class="flip-container">' +
+                '<div class="flipper" onclick="this.classList.toggle(\'flipped\')">' +
+                '<div class="front"><img src="img/tile-back.png"/>' +
+                '</div>' + '<div class="back"><img src="img/tile' + tile.tileNum + '.jpg"/>' +
+                '</div></div></div>'
         
         row.append(flipContainer);
 

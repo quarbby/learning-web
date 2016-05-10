@@ -15,8 +15,8 @@ p {
 }
 
 #game-board img {
-	height: 13%;
-	width: 13%;
+	height: 150px;
+	width: 150px;
 	padding: 5px;
 	box-sizing: border-box;
 	background-color: black;
@@ -25,7 +25,8 @@ p {
 /* Flipping the images */
 
 /* entire container, keeps perspective */
-.flip-container{
+.flip-container {
+	display: table-cell;
 	perspective:1000;
 }
 
@@ -34,18 +35,17 @@ p {
 }
 
 .flip-container, .front, .back{
-	width: 50px;
-	height: 50px;
+	width: 150px;
+	height: 150px;
 }
 
 .flipper {
-	transition:0.6s;
-	transform-style:preserve-3d;
-	position:relative;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
 }
 
 .front, .back {
-/*backface-visibility*/
     backface-visibility:hidden;
 	position:absolute;
 	top:0;
@@ -55,6 +55,12 @@ p {
 .front {
 	z-index:2;
 }
+
 .back {
     transform:rotateY(180deg);
+}
+
+.row {
+	display: table;
+	table-layout: fixed;
 }
