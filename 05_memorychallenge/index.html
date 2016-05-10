@@ -17,11 +17,23 @@
 	    <div class="container">
     		<h1>A Memory Game</h1>
     		<p><button id="start-game">Start New Game</button></p>
-    		<p>Elapsed Time: <span id="elapsed-seconds"></span></p>
+    		<p>Elapsed Time: <span id="elapsed-seconds">0 seconds</span></p>
     		<p>Matches: <span id="matches"></span></p>
     		<p>Matches Left: <span id = "remaining"></spand></p>
     		<p>Incorrect Guesses: <span id = "wrong"></span></p>
 		</div>
+		
+		<div class="flip-container">
+		  <div class="flipper" onclick="this.classList.toggle('flipped')">
+		    <div class="front">
+		    	<img src="img/tile1.jpg"/>
+		    </div>
+		    <div class="back">
+		    	<img src="img/tile2.jpg"/>
+		    </div>
+		  </div>
+		</div>
+	
 		
 		<div class="container" id="game-board"></div></div>
 	</body>
