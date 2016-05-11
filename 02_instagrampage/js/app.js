@@ -39,7 +39,7 @@ function loadFeed(category) {
     //Set up instafeed
     var imgs = [];
     feed = new Instafeed({
-        clientId: 'f2259c6e745d4df087e9d4659325ae97',
+        clientId: '<YOUR INSTAGRAM KEY>',
         //target: 'instafeed',
         get: 'tagged',
         tagName: category,
@@ -211,6 +211,3 @@ $(window).scroll(function(){
     }
   
 });
-
-// MS cognitive vision key: bc6e814e6a3c4db595d49fb5ec045ee7
-// Other valid instagram client ID: 2e5a3f8cc1754723a81d216f3d302a69

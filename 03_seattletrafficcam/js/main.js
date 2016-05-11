@@ -10,7 +10,7 @@ $(function() {
     var markers = [];
     var allData = [];
     
-    $.getJSON('http://data.seattle.gov/resource/65fc-btcc.json')
+    $.getJSON('https://data.seattle.gov/resource/65fc-btcc.json')
         .done(function(data) {
             allData = data;
             
@@ -38,6 +38,7 @@ $(function() {
                 });
 
                 markers.push(marker);
+                console.log(markers);
                 
                 // To use allData globally, use a callback  
                 $('#search').bind('search keyup', function() {

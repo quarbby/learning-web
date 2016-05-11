@@ -3,12 +3,14 @@
 */
 
 var tiles;
+var tilePairs;
 var timer;
 
 // Stats
 var wrong;
 var matches;
 var remaining;
+var matchingInProgress = false;
 
 $(function(){
     startTimer();
@@ -19,16 +21,21 @@ $(function(){
        setUpGame();
        startTimer();
     });
-
+    
+    console.log(tilePairs);
     
     $('#game-board img').click(function() {
         var clickedImg = $(this);
-        var tile = clickedImg.data('tile'); 
-        if (tile.flipped) {
-            return;
-        } else {
-            flipTile(tile, clickedImg);
-        }
+        var parent = clickedImg.parent().parent();
+        var parentNodes = parent.get(0);
+        var imgName = $('img', parentNodes)[1].getAttribute("src");
+        
+        // Find image and check if has class flipped
+        
+        //var imgNum = String(imgName).match(/\d+/)[0];
+        
+        //console.log(imgName + " " + imgNum);
+        parent.toggleClass('flipped');
     });
 });
 
@@ -55,7 +62,6 @@ function initialiseTiles() {
     
     for (var i=1; i <= 32; i++) {
         tiles.push({
-            tileNum: i,
             src: 'img/tile' + i + '.jpg',
             flipped: false,
             matched: false
@@ -70,6 +76,7 @@ function resetStats() {
     wrong = 0;
     matches = 0;
     remaining = 8;
+    matchingInProgress = false;
 }
 
 /* 
@@ -95,7 +102,7 @@ function setUpGame() {
     // Get pairs of tiles
     var selectedTiles = tiles.slice(0, 8);
     var selectedTilesClone = _.clone(selectedTiles);
-    var tilePairs = _.concat(selectedTiles, selectedTilesClone);
+    tilePairs = _.concat(selectedTiles, selectedTilesClone);
     tilePairs = _.shuffle(tilePairs);
     
     drawGame(tilePairs);
@@ -120,9 +127,10 @@ function drawGame(tilePairs) {
         }
         
         var flipContainer = '<div class="flip-container">' +
-                '<div class="flipper" onclick="this.classList.toggle(\'flipped\')">' +
+                //'<div class="flipper" onclick="this.classList.toggle(\'flipped\')">' +
+                '<div class="flipper">' +
                 '<div class="front"><img src="img/tile-back.png"/>' +
-                '</div>' + '<div class="back"><img src="img/tile' + tile.tileNum + '.jpg"/>' +
+                '</div>' + '<div class="back"><img src="' + tile.src + '"/>' +
                 '</div></div></div>'
         
         row.append(flipContainer);
