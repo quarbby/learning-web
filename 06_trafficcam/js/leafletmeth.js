@@ -14,7 +14,14 @@ $(function() {
 
 });
 
+// Update every minute
+window.setInterval(function(){
+  getTrafficImages();
+}, 60000);
+
 function getTrafficImages() {
+    console.log("Get Traffic Images");
+    
     markers = [];
     cameras = [];
     
@@ -33,6 +40,9 @@ function getTrafficImages() {
         success: function(data) {
             cameras = data.items[0].cameras;
             //console.log(cameras);
+            
+            console.log(cameras[0].timestamp);
+            $('#last-update').text(cameras[0].timestamp);
             
             cameras.forEach(function(cam) {
                var marker = L.marker(
